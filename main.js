@@ -1,7 +1,7 @@
 (function(){
 
 	var platform = {
-		main: 'module.js'
+
 	};
 
 	if( typeof window !== 'undefined' ){
@@ -79,6 +79,8 @@
 		platform.systemLocation = './system.js';
 	}
 
+	platform.global.platform = platform;
+
 	var dependencies = [];
 
 	dependencies.push({
@@ -115,14 +117,20 @@
 	function includeDependencies(dependencies, callback){
 		var i = 0, j = dependencies.length, dependency;
 
+		function done(error){
+			setImmediate(function(){
+				callback(error);
+			});
+		}
+
 		function includeNext(error){
 			if( error ){
 				console.log('include error', error);
-				callback(error);
+				done(error);
 			}
 			else if( i === j ){
 				console.log('all dependencies included');
-				callback();
+				done();
 			}
 			else{
 				dependency = dependencies[i];
