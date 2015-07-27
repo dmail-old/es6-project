@@ -1,1 +1,0 @@
-export let ok = 'ok';

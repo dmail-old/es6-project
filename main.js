@@ -24,9 +24,28 @@
 			document.head.appendChild(script);
 		};
 
+		var agent = (function(){
+			var ua = navigator.userAgent.toLowerCase();
+			var regex = /(opera|ie|firefox|chrome|version)[\s\/:]([\w\d\.]+)?.*?(safari|version[\s\/:]([\w\d\.]+)|$)/;
+			var UA = ua.match(regex) || [null, 'unknown', 0];
+			var name = UA[1] == 'version' ? UA[3] : UA[1];
+			var version;
+
+			// version
+			if( UA[1] == 'ie' && document.documentMode ) version = document.documentMode;
+			else if( UA[1] == 'opera' && UA[4] ) version = parseFloat(UA[4]);
+			else version = parseFloat(UA[2]);
+
+			return {
+				name: name,
+				version: version
+			};
+		})();
+
 		platform.type = 'browser';
 		platform.global = window;
-		platform.name = '';
+		platform.name = agent.name;
+		platform.version = agent.version;
 		platform.os = navigator.platform.toLowerCase();
 
 		platform.systemLocation = './node_modules/systemjs/dist/system.js';
@@ -52,6 +71,7 @@
 		platform.type = 'process';
 		platform.global = global;
 		platform.name = 'node';
+		platform.version = process.version;
 		// https://nodejs.org/api/process.html#process_process_platform
 		// 'darwin', 'freebsd', 'linux', 'sunos', 'win32'
 		platform.os = process.platform === 'win32' ? 'windows' : process.platform;
