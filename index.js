@@ -1,1 +1,1 @@
-var System = require('./main.js');
+require('./main.js');

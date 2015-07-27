@@ -1,7 +1,4 @@
-/*
-module.exports = require('es6-module-loader').System;
+var System = require('es6-module-loader').System;
+global.System = System;
 
-global.System = module.exports;
-*/
-
-require('systemjs');
+//require('systemjs');
