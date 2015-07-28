@@ -9,6 +9,8 @@
 		"@dmail/promise-es6": "*",
 		"@dmail/set-immediate": "*",
 		"@dmail/object-assign": "*",
+		"@dmail/url-search-params": "*",
+		"@dmail/url": "*",
 		"open": "*"
 	},
 	"scripts": {

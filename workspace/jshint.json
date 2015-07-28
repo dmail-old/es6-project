@@ -51,6 +51,7 @@
 		"jsenv": true,
 		"include": true,
 		"URI": true,
+		"platform": true,
 		"Base64": true
 	},
 	"devel": true,

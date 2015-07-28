@@ -6,6 +6,8 @@
 		}
 	};
 
+	var baseURL;
+
 	if( typeof window !== 'undefined' ){
 		platform.restart = function(){
 			window.reload();
@@ -44,8 +46,16 @@
 			};
 		})();
 
+		baseURL = (function(){
+			var href = window.location.href.split('#')[0].split('?')[0];
+			var base = href.slice(0, href.lastIndexOf('/') + 1);
+
+			return base;
+		})();
+
 		platform.type = 'browser';
 		platform.global = window;
+		platform.baseURL = baseURL;
 		platform.name = agent.name;
 		platform.version = agent.version;
 		platform.os = navigator.platform.toLowerCase();
@@ -70,8 +80,22 @@
 			process.kill(2);
 		};
 
+		baseURL = (function(){
+			var base = 'file://' + process.cwd();
+
+			if( process.platform.match(/^win/) ){
+				base = base.replace(/\\/g, '/');
+			}
+			if( base[base.length - 1] != '/' ){
+				base+= '/';
+			}
+
+			return base;
+		})();
+
 		platform.type = 'process';
 		platform.global = global;
+		platform.baseURL = baseURL;
 		platform.name = 'node';
 		platform.version = process.version;
 		// https://nodejs.org/api/process.html#process_process_platform
@@ -88,6 +112,22 @@
 	platform.global.platform = platform;
 
 	var dependencies = [];
+
+	dependencies.push({
+		name: 'URLSearchParams',
+		url: './node_modules/@dmail/url-search-params/index.js',
+		condition: function(){
+			return false === 'assign' in platform.global;
+		}
+	});
+
+	dependencies.push({
+		name: 'URL',
+		url: './node_modules/@dmail/url/index.js',
+		condition: function(){
+			return false === 'URL' in platform.global;
+		}
+	});
 
 	dependencies.push({
 		name: 'Object.assign',
@@ -181,21 +221,30 @@
 	includeDependencies(dependencies, function(error){
 		if( error ) throw error;
 
-		System.paths.proto = 'lib/proto/index.js';
-		System.platform = platform;
-
 		var importMethod = System.import;
 		System.import = function(normalizedName){
 			return importMethod.apply(this, arguments).catch(function(error){
 				setTimeout(function(){
 					throw error;
 				}, 0);
-				console.log('import error', 'System.get()', System.failed[0]);
+				if( System.failed.length ) console.log('import error', System.failed[0]);
+
+				//console.log('import error', 'System.get()', System.failed[0]);
 				return Promise.reject(error);
 			});
 		};
 
-		platform.onready();
+		System.import('./lib/fetch/fetch.js').then(function(exports){
+			return exports.fetch('./config.json').then(function(response){
+				return response.json();
+			}).then(function(config){
+				console.log('fetched config.json', config);
+				platform.config  = config;
+				platform.onready();
+			}).catch(function(error){
+				console.log('failed fetch', error.stack);
+			});
+		});
 	});
 
 })();
