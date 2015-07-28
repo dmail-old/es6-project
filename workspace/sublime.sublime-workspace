@@ -1,0 +1,680 @@
+﻿{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"admin",
+				"admin_login"
+			],
+			[
+				"ac",
+				"activate_token"
+			],
+			[
+				"find",
+				"find_element_by_id"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"find_",
+				"find_element_by_css_selector"
+			],
+			[
+				"cre",
+				"createPdfDocumentDefinition"
+			],
+			[
+				"cooke",
+				"cookieBandHTML"
+			],
+			[
+				"cooki",
+				"cookieBandHTML"
+			],
+			[
+				"text-",
+				"text-decoration"
+			],
+			[
+				"checkPa",
+				"checkPasswordConfirmation"
+			],
+			[
+				"glob",
+				"globalCompositeOperation"
+			],
+			[
+				"pre",
+				"preventDefault"
+			],
+			[
+				"label",
+				"labelSize"
+			],
+			[
+				"ori",
+				"origWidth"
+			],
+			[
+				"backDrop",
+				"backdropContainer"
+			],
+			[
+				"check",
+				"checkFirstNumber"
+			],
+			[
+				"same",
+				"sameNumbers"
+			],
+			[
+				"first",
+				"firstNumberIsValid"
+			],
+			[
+				"has",
+				"hasPapillomaVirus"
+			],
+			[
+				"hasP",
+				"hasPapillomaVirus"
+			],
+			[
+				"backgroun",
+				"backgroundOpacity"
+			],
+			[
+				"center",
+				"centerCircle"
+			],
+			[
+				"get",
+				"getOuterBorderPoint"
+			],
+			[
+				"cen",
+				"centerCircle"
+			],
+			[
+				"border",
+				"borderColorList"
+			],
+			[
+				"acti",
+				"activedArc"
+			],
+			[
+				"colo",
+				"colorStop"
+			],
+			[
+				"group",
+				"groupElement"
+			],
+			[
+				"crea",
+				"createElement"
+			],
+			[
+				"non",
+				"noneEffect"
+			],
+			[
+				"cr",
+				"createQuestion"
+			],
+			[
+				"add",
+				"addQuestion"
+			],
+			[
+				"category",
+				"categoryFileName"
+			],
+			[
+				"clip",
+				"clipImage"
+			],
+			[
+				"da",
+				"databaseQuestions"
+			],
+			[
+				"type",
+				"typeMap"
+			],
+			[
+				"form",
+				"formMap"
+			],
+			[
+				"ques",
+				"questions"
+			],
+			[
+				"fin",
+				"findQuestionByname"
+			],
+			[
+				"fam",
+				"familyQuestions"
+			],
+			[
+				"updat",
+				"updateValidity"
+			],
+			[
+				"person",
+				"personal-history"
+			],
+			[
+				"create",
+				"createChoice"
+			],
+			[
+				"entitl",
+				"entitled-modal"
+			],
+			[
+				"class",
+				"className"
+			],
+			[
+				"in",
+				"information"
+			],
+			[
+				"nav",
+				"navElements"
+			],
+			[
+				"is",
+				"isAccessible"
+			],
+			[
+				"prev",
+				"prevVisible"
+			],
+			[
+				"next",
+				"nextVisible"
+			],
+			[
+				"remov",
+				"removeQuestion"
+			],
+			[
+				"condi",
+				"conditionalQuestions"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"update",
+				"updateValidity"
+			],
+			[
+				"creat",
+				"createSlide"
+			],
+			[
+				"up",
+				"updatedParentWidth"
+			],
+			[
+				"a",
+				"availableHeight"
+			],
+			[
+				"ava",
+				"availableWidth"
+			],
+			[
+				"avai",
+				"availableHeight"
+			],
+			[
+				"di",
+				"disabledArc"
+			],
+			[
+				"outer",
+				"outerCircle"
+			],
+			[
+				"aa",
+				"attributeAlias"
+			],
+			[
+				"inner",
+				"innerMove"
+			],
+			[
+				"sta",
+				"startDegrees"
+			],
+			[
+				"inn",
+				"innerCircle"
+			],
+			[
+				"ou",
+				"outerCircle"
+			],
+			[
+				"SVG",
+				"SVGDoc"
+			],
+			[
+				"end",
+				"endRadius"
+			],
+			[
+				"start",
+				"startRadius"
+			],
+			[
+				"max",
+				"maxSize"
+			],
+			[
+				"ma",
+				"maxSize"
+			],
+			[
+				"radi",
+				"radiusCircles"
+			],
+			[
+				"rad",
+				"radiusCircles"
+			],
+			[
+				"radia",
+				"radians"
+			],
+			[
+				"slice",
+				"sliceCount"
+			],
+			[
+				"availab",
+				"availableWidth"
+			],
+			[
+				"cir",
+				"circleCount"
+			],
+			[
+				"bo",
+				"borderWidth"
+			],
+			[
+				"getB",
+				"getBorderPointInCircle"
+			],
+			[
+				"radius",
+				"radiusCircles"
+			],
+			[
+				"our",
+				"outerCircleRadiusCircle"
+			],
+			[
+				"ci",
+				"circleCount"
+			],
+			[
+				"out",
+				"outerCircleWidth"
+			],
+			[
+				"c",
+				"constructor"
+			],
+			[
+				"curve",
+				"curveBackgroundColor"
+			],
+			[
+				"curv",
+				"curvePoints"
+			],
+			[
+				"cur",
+				"curvePoints"
+			],
+			[
+				"bc",
+				"backgroundColor"
+			],
+			[
+				"circl",
+				"circle"
+			],
+			[
+				"fill",
+				"fillStyle"
+			],
+			[
+				"w",
+				"circleBorderWidth"
+			],
+			[
+				"str",
+				"strokeStyle"
+			],
+			[
+				"lin",
+				"lineWidth"
+			],
+			[
+				"right",
+				"rightControl"
+			],
+			[
+				"diapo",
+				"diapoDirection"
+			],
+			[
+				"oldDiapo",
+				"oldDiapoDirection"
+			],
+			[
+				"radio",
+				"radioChange"
+			],
+			[
+				"titl",
+				"titleText"
+			],
+			[
+				"to",
+				"toHTML"
+			],
+			[
+				"button",
+				"buttonText"
+			],
+			[
+				"getOwn",
+				"getOwnPropertyDescriptor"
+			],
+			[
+				"na",
+				"nav-survey"
+			],
+			[
+				"modu",
+				"moduleTests"
+			],
+			[
+				"call",
+				"callSite"
+			],
+			[
+				"Fak",
+				"FakeFileSystem"
+			],
+			[
+				"com",
+				"complementProperty"
+			],
+			[
+				"clone",
+				"clonePrimitive"
+			],
+			[
+				"temp",
+				"tempMark"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/Users/Damien/Documents/GitHub/es6-project/index.js",
+			"settings":
+			{
+				"buffer_size": 58,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"sets",
+				"Set Syntax: JSON"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 225.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Damien/Documents/GitHub/es6-project",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib"
+	],
+	"file_history":
+	[
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/start.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/fs-watch.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/main.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/http/http.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/http/http-response.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/http/http-request.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/http/http-request-promise.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/http/http-request-process.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/http/http-request-browser.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/http/http-headers.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/http/http-event-stream.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/http/http-event-source.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/http/http-client.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/http/duplex-stream.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/iterator/object-iterator.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/sse.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/server.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/utils/mkdir-to.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/utils/has-dir.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/utils/mimetype.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/utils/filesystem.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/package.json",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/storage-file.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/work.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/scripts/start.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/lib/lib/function.js",
+		"/C/Users/Damien/Documents/GitHub/es6-project/start-chrome.bat"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"C:\\Users\\Damien\\Documents\\GitHub\\nodesite"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/Damien/Documents/GitHub/es6-project/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 58,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								58,
+								58
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "sublime.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 368.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

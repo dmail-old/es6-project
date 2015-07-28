@@ -1,7 +1,9 @@
 (function(){
 
 	var platform = {
-
+		ready: function(listener){
+			this.onready = listener;
+		}
 	};
 
 	if( typeof window !== 'undefined' ){
@@ -76,12 +78,24 @@
 		// 'darwin', 'freebsd', 'linux', 'sunos', 'win32'
 		platform.os = process.platform === 'win32' ? 'windows' : process.platform;
 
-		platform.systemLocation = './system.js';
+		platform.systemLocation = './lib/system.js';
+
+		platform.global.require = function(module){
+			return require(module);
+		};
 	}
 
 	platform.global.platform = platform;
 
 	var dependencies = [];
+
+	dependencies.push({
+		name: 'Object.assign',
+		url: './node_modules/@dmail/object-assign/index.js',
+		condition: function(){
+			return false === 'assign' in Object;
+		}
+	});
 
 	dependencies.push({
 		name: 'setImmediate',
@@ -111,6 +125,10 @@
 			System.babelOptions = {
 
 			};
+
+			if( platform.type === 'process' ){
+				System.babelOptions.retainLines = true;
+			}
 		}
 	});
 
@@ -177,7 +195,7 @@
 			});
 		};
 
-		System.import(platform.main).then(console.log);
+		platform.onready();
 	});
 
 })();

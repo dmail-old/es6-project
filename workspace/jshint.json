@@ -1,0 +1,59 @@
+/*
+
+*/
+
+{
+	"-W079": false, // http://jslinterrors.com/redefinition-of-a/
+	"loopfunc": true, // allow function in loo
+	"evil": true,
+	"eqeqeq": false,// can write a == b instead of a === b
+	"browser": true,
+	"node": true,
+	"white": false,
+	"indent": 4,
+	"undef": true,
+	"multistr": true, // \ as escaping char for multistr
+	"boss": true, // if(a = true)
+	"eqnull": true, // item == null
+	"maxlen": 1430,
+	"globalstrict": false, // use strict out of a function
+	"sub": true, // objet['key'] and not object.key
+	"esnext": true,
+	/*
+   jkpjkpo
+	"format": {
+		"indent": {
+			"firstLevel": false
+		}
+	},
+	*/
+	"globals": {
+		"$": true,
+		"FS": true,
+		"DB": true,
+		"path": true,
+		"require": true,
+		"module": true,
+		"Event": true,
+		"CustomEvent": true,
+		"Text": true,
+		"lang": true,
+		"logger": true,
+		"root": true,
+		"config": true,
+		"File": true,
+		"imports": true,
+		"it": true,
+		"expect": true,
+		"Iterator": true,
+		"Symbol": true,
+		"Promise": true,
+		"jsenv": true,
+		"include": true,
+		"URI": true,
+		"Base64": true
+	},
+	"devel": true,
+	"node": true
+	//"unused": true
+}

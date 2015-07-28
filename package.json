@@ -7,6 +7,18 @@
 		"babel-core": "*",
 		"es6-module-loader": "*",
 		"@dmail/promise-es6": "*",
-		"@dmail/set-immediate": "*"
+		"@dmail/set-immediate": "*",
+		"@dmail/object-assign": "*",
+		"open": "*"
+	},
+	"scripts": {
+		"preinstall": "node scripts/preinstall.js",
+		"postinstall": "node scripts/postinstall.js",
+		"start": "node scripts/start.js",
+		"update": "node scripts/update.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dmail/es6-project"
 	}
 }

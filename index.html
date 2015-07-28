@@ -6,7 +6,9 @@
 
 	<script src="./main.js"></script>
 	<script>
-		window.platform.main = 'module.js';
+		window.platform.ready(function(){
+			System.import('./lib/module.js').then(console.log);
+		});
 	</script>
 </head>
 
