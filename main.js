@@ -10,6 +10,10 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 	var platform = {
 		ready: function(listener){
 			this.onready = listener;
+		},
+
+		onerror: function(error){
+			console.error(String(error));
 		}
 	};
 
@@ -176,7 +180,13 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 			};
 
 			if( platform.type === 'process' ){
-				require('@dmail/source-map-node-error');
+				var replaceErrorStackUsingSourceMap = require('@dmail/source-map-node-error');
+				var importMethod = System.import;
+				System.import = function(){
+					return importMethod.apply(this, arguments).catch(function(error){
+						return Promise.reject(replaceErrorStackUsingSourceMap(error));
+					});
+				};
 				//System.babelOptions.retainLines = true;
 			}
 		}
@@ -234,15 +244,17 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 		var importMethod = System.import;
 		System.import = function(normalizedName){
 			return importMethod.apply(this, arguments).catch(function(error){
-				setTimeout(function(){
-					throw error;
-				}, 0);
-				if( System.failed && System.failed.length ) console.log('import error', System.failed[0]);
-
-				//console.log('import error', 'System.get()', System.failed[0]);
+				// faudrais exclude les erreur de réseau
+				// sinon c'est forcément une erreur lié au code des certains modules
+				//if( error.name === 'ReferenceError' || error.name === 'SyntaxError' ){
+					platform.onerror(error);
+				//}
 				return Promise.reject(error);
 			});
 		};
+
+		// process.on('uncaughtException', replaceErrorStackUsingSourceMap);
+		// process.exit(1);
 
 		System.import('./lib/fetch/fetch.js').then(function(exports){
 			return exports.fetch('./config.json').then(function(response){
