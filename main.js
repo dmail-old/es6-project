@@ -175,10 +175,9 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 
 			};
 
-			require('@dmail/source-map-node-error');
-
 			if( platform.type === 'process' ){
-				System.babelOptions.retainLines = true;
+				require('@dmail/source-map-node-error');
+				//System.babelOptions.retainLines = true;
 			}
 		}
 	});
@@ -245,9 +244,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 			});
 		};
 
-		System.import('./app/client/client.js');
-
-		/*System.import('./lib/fetch/fetch.js').then(function(exports){
+		System.import('./lib/fetch/fetch.js').then(function(exports){
 			return exports.fetch('./config.json').then(function(response){
 				return response.json();
 			}).then(function(config){
@@ -258,7 +255,6 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 				console.log('failed fetch', error.stack);
 			});
 		});
-		*/
 	});
 
 })();
