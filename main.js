@@ -1,3 +1,10 @@
+/*
+http://www.2ality.com/2015/04/node-es6-transpiled.html
+
+imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du module est ensuite
+
+*/
+
 (function(){
 
 	var platform = {
@@ -96,7 +103,7 @@
 		platform.type = 'process';
 		platform.global = global;
 		platform.baseURL = baseURL;
-		platform.name = 'node';
+		platform.name = parseInt(process.version.match(/^v(\d+)\./)[1]) >= 1 ? 'iojs' : 'node';
 		platform.version = process.version;
 		// https://nodejs.org/api/process.html#process_process_platform
 		// 'darwin', 'freebsd', 'linux', 'sunos', 'win32'
@@ -108,6 +115,8 @@
 			return require(module);
 		};
 	}
+
+	console.log(platform.name, platform.version);
 
 	platform.global.platform = platform;
 
@@ -165,6 +174,8 @@
 			System.babelOptions = {
 
 			};
+
+			require('@dmail/source-map-node-error');
 
 			if( platform.type === 'process' ){
 				System.babelOptions.retainLines = true;
@@ -227,14 +238,16 @@
 				setTimeout(function(){
 					throw error;
 				}, 0);
-				if( System.failed.length ) console.log('import error', System.failed[0]);
+				if( System.failed && System.failed.length ) console.log('import error', System.failed[0]);
 
 				//console.log('import error', 'System.get()', System.failed[0]);
 				return Promise.reject(error);
 			});
 		};
 
-		System.import('./lib/fetch/fetch.js').then(function(exports){
+		System.import('./app/client/client.js');
+
+		/*System.import('./lib/fetch/fetch.js').then(function(exports){
 			return exports.fetch('./config.json').then(function(response){
 				return response.json();
 			}).then(function(config){
@@ -245,6 +258,7 @@
 				console.log('failed fetch', error.stack);
 			});
 		});
+		*/
 	});
 
 })();

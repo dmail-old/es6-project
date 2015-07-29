@@ -11,6 +11,7 @@
 		"@dmail/object-assign": "*",
 		"@dmail/url-search-params": "*",
 		"@dmail/url": "*",
+		"@dmail/source-map-node-error": "*",
 		"open": "*"
 	},
 	"scripts": {

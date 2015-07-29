@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":[],"mappings":";;AAAA,OAAO,CAAC,8BAA8B,CAAC,CAAC;;AAExC,MAAM,IAAI,KAAK,CAAC,MAAM,CAAC,CAAC","file":"index-compiled.js","sourcesContent":["require('@dmail/source-map-node-error');\r\n\r\nthrow new Error('here');"]}

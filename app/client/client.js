@@ -1,1 +1,1 @@
-console.log('client code');
+throw new Error('here');
