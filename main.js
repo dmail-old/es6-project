@@ -134,7 +134,6 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 		}
 	});
 
-	/*
 	dependencies.push({
 		name: 'URL',
 		url: './node_modules/@dmail/url/index.js',
@@ -142,7 +141,6 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 			return false === 'URL' in platform.global;
 		}
 	});
-	*/
 
 	dependencies.push({
 		name: 'Object.assign',
@@ -183,7 +181,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 			};
 
 			if( platform.type === 'process' ){
-				//require('@dmail/system-node-sourcemap');
+				require('system-node-sourcemap');
 				//System.babelOptions.retainLines = true;
 			}
 		}
@@ -238,8 +236,8 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 	includeDependencies(dependencies, function(error){
 		if( error ) throw error;
 
-		/*
 		var importMethod = System.import;
+
 		System.import = function(normalizedName){
 			return importMethod.apply(this, arguments).catch(function(error){
 				// faudrais exclude les erreur de réseau
@@ -250,13 +248,13 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 				return Promise.reject(error);
 			});
 		};
-		*/
 
 		// process.on('uncaughtException', replaceErrorStackUsingSourceMap);
 		// process.exit(1);
 
-		//System.import('./app/server/server.js').then(console.log).catch(console.error);
+		System.import('./app/server/server.js').then(console.log);
 
+		/*
 		System.import('./lib/fetch/fetch.js').then(function(exports){
 			return exports.fetch('./config.json').then(function(response){
 				return response.json();
@@ -268,6 +266,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 				console.log('failed fetch', error.stack);
 			});
 		});
+		*/
 	});
 
 })();
