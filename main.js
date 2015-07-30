@@ -134,6 +134,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 		}
 	});
 
+	/*
 	dependencies.push({
 		name: 'URL',
 		url: './node_modules/@dmail/url/index.js',
@@ -141,6 +142,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 			return false === 'URL' in platform.global;
 		}
 	});
+	*/
 
 	dependencies.push({
 		name: 'Object.assign',
@@ -162,7 +164,8 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 		name: 'Promise',
 		url: './node_modules/@dmail/promise-es6/index.js',
 		condition: function(){
-			return false === 'Promise' in platform.global;
+			return true; // force because of node promise not implementing unhandled rejection
+			//return false === 'Promise' in platform.global;
 		}
 	});
 
@@ -180,13 +183,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 			};
 
 			if( platform.type === 'process' ){
-				var replaceErrorStackUsingSourceMap = require('@dmail/source-map-node-error');
-				var importMethod = System.import;
-				System.import = function(){
-					return importMethod.apply(this, arguments).catch(function(error){
-						return Promise.reject(replaceErrorStackUsingSourceMap(error));
-					});
-				};
+				//require('@dmail/system-node-sourcemap');
 				//System.babelOptions.retainLines = true;
 			}
 		}
@@ -241,6 +238,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 	includeDependencies(dependencies, function(error){
 		if( error ) throw error;
 
+		/*
 		var importMethod = System.import;
 		System.import = function(normalizedName){
 			return importMethod.apply(this, arguments).catch(function(error){
@@ -252,9 +250,12 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 				return Promise.reject(error);
 			});
 		};
+		*/
 
 		// process.on('uncaughtException', replaceErrorStackUsingSourceMap);
 		// process.exit(1);
+
+		//System.import('./app/server/server.js').then(console.log).catch(console.error);
 
 		System.import('./lib/fetch/fetch.js').then(function(exports){
 			return exports.fetch('./config.json').then(function(response){

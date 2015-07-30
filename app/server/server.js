@@ -1,7 +1,7 @@
+var http = System._nodeRequire('http');
+
 console.log('server code');
 
-require('http').createServer(function(){
+http.createServer(function(){
 
 }).listen();
-
-yo;

@@ -5,13 +5,12 @@
 	"dependencies": {
 		"babel": "*",
 		"babel-core": "*",
-		"es6-module-loader": "*",
+		"systemjs": "*",
 		"@dmail/promise-es6": "*",
 		"@dmail/set-immediate": "*",
 		"@dmail/object-assign": "*",
 		"@dmail/url-search-params": "*",
 		"@dmail/url": "*",
-		"@dmail/source-map-node-error": "*",
 		"open": "*"
 	},
 	"scripts": {
