@@ -245,7 +245,6 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 				//if( error.name === 'ReferenceError' || error.name === 'SyntaxError' ){
 					platform.onerror(error);
 				//}
-				return Promise.reject(error);
 			});
 		};
 
