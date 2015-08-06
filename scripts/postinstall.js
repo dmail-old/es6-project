@@ -34,6 +34,7 @@ function createFile(location, content){
 var projectConfig = getLocation('./config.json');
 var localConfig = getLocation('./config-local.json');
 
+/*
 promise = promise.then(function(){
 	return createFile(projectConfig, '');
 });
@@ -93,3 +94,4 @@ promise.catch(function(error){
 		throw error;
 	});
 });
+*/

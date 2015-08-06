@@ -13,11 +13,29 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 		},
 
 		onerror: function(error){
-			console.error(String(error));
+			if( error.stackTrace ){
+				console.error(String(error));
+			}
+			else{
+				throw error;
+			}
 		}
 	};
 
 	var baseURL;
+
+	function parseVersion(version){
+		var parts = String(version).split('.');
+
+		return {
+			major: parseInt(parts[0]),
+			minor: parts[1] ? parseInt(parts[1]) : 0,
+			patch: parts[2] ? parseInt(parts[2]) : 0,
+			toString: function(){
+				return this.major + '.' + this.minor + '.' + this.patch;
+			}
+		};
+	}
 
 	if( typeof window !== 'undefined' ){
 		platform.restart = function(){
@@ -41,15 +59,15 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 
 		var agent = (function(){
 			var ua = navigator.userAgent.toLowerCase();
-			var regex = /(opera|ie|firefox|chrome|version)[\s\/:]([\w\d\.]+)?.*?(safari|version[\s\/:]([\w\d\.]+)|$)/;
+			var regex = /(opera|ie|firefox|chrome|version)[\s\/:]([\w\d\.]+(?:\.\d+)?)?.*?(safari|version[\s\/:]([\w\d\.]+)|$)/;
 			var UA = ua.match(regex) || [null, 'unknown', 0];
 			var name = UA[1] == 'version' ? UA[3] : UA[1];
 			var version;
 
 			// version
 			if( UA[1] == 'ie' && document.documentMode ) version = document.documentMode;
-			else if( UA[1] == 'opera' && UA[4] ) version = parseFloat(UA[4]);
-			else version = parseFloat(UA[2]);
+			else if( UA[1] == 'opera' && UA[4] ) version = UA[4];
+			else version = UA[2];
 
 			return {
 				name: name,
@@ -68,7 +86,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 		platform.global = window;
 		platform.baseURL = baseURL;
 		platform.name = agent.name;
-		platform.version = agent.version;
+		platform.version = parseVersion(agent.version);
 		platform.os = navigator.platform.toLowerCase();
 
 		platform.systemLocation = './node_modules/es6-module-loader/dist/es6-module-loader-dev.js';
@@ -108,7 +126,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 		platform.global = global;
 		platform.baseURL = baseURL;
 		platform.name = parseInt(process.version.match(/^v(\d+)\./)[1]) >= 1 ? 'iojs' : 'node';
-		platform.version = process.version;
+		platform.version = parseVersion(process.version.slice(1));
 		// https://nodejs.org/api/process.html#process_process_platform
 		// 'darwin', 'freebsd', 'linux', 'sunos', 'win32'
 		platform.os = process.platform === 'win32' ? 'windows' : process.platform;
@@ -243,13 +261,20 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 				// faudrais exclude les erreur de réseau
 				// sinon c'est forcément une erreur lié au code des certains modules
 				//if( error.name === 'ReferenceError' || error.name === 'SyntaxError' ){
-					platform.onerror(error);
+					// use setImmediate to allow a throw without catching the error
+
 				//}
+
+				error.fromImport = true;
+				return Promise.reject(error);
 			});
 		};
 
-		// process.on('uncaughtException', replaceErrorStackUsingSourceMap);
-		// process.exit(1);
+		process.on('unhandledRejection', function(error){
+			if( error && error.fromImport ){
+				platform.onerror(error);
+			}
+		});
 
 		System.import('./app/server/server.js').then(console.log);
 

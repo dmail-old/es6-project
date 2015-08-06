@@ -6,6 +6,10 @@
 
 	<script src="./main.js"></script>
 	<script>
+		window.platform.onerror = function(e){
+			console.error(e);
+		};
+
 		window.platform.ready(function(){
 			System.import('./app/client/client.js').then(console.log);
 		});
@@ -13,9 +17,8 @@
 </head>
 
 <body>
-	<div role="main">
-		<h1>Systemjs</h1>
-	</div>
+	<main>
+	</main>
 </body>
 
 </html>
