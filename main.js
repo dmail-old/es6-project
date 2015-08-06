@@ -71,7 +71,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 		platform.version = agent.version;
 		platform.os = navigator.platform.toLowerCase();
 
-		platform.systemLocation = './node_modules/systemjs/dist/system.js';
+		platform.systemLocation = './node_modules/es6-module-loader/dist/es6-module-loader-dev.js';
 	}
 	else{
 		platform.include = function(url, done){
@@ -130,7 +130,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 		name: 'URLSearchParams',
 		url: './node_modules/@dmail/url-search-params/index.js',
 		condition: function(){
-			return false === 'assign' in platform.global;
+			return false === 'URLSearchParams' in platform.global;
 		}
 	});
 
