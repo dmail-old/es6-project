@@ -215,6 +215,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 
 			if( platform.type === 'process' ){
 				var transformError = require('system-node-sourcemap');
+				require('babel/polyfill');
 				platform.error = function(error){
 					transformError(error);
 					this.onerror(error);
@@ -313,9 +314,20 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 				platform.info('use config', config);
 				platform.config  = config;
 
+				// il faut change System.fetch pour utiliser fetch et qu'on puisse catch
+				// les fichier dont on a besoin
+
+				/*
+				System.fetch = function(load){
+					return exports.fetch(load.address).then(function(response){
+						return response.text();
+					});
+				};
+				*/
+
 				platform.observeFileSystem = function(){
 					System.import('./lib/http/http-event-source.js').then(function(exports){
-						var url = platform.baseURL + '/filesystem-events.js';
+						var url = config['server-url'] + '/filesystem-events.js';
 						var source = exports.HttpEventSource.create(url);
 
 						source.on('change', function(e){
