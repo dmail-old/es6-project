@@ -290,8 +290,9 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 		};
 
 		if( process ){
-			process.on('unhandledRejection', function(error){
+			process.on('unhandledRejection', function(error, p){
 				if( error ){
+					console.log('unhandled');
 					platform.error(error);
 				}
 			});
@@ -341,8 +342,6 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 				};
 
 				platform.onready();
-			}).catch(function(error){
-				platform.info('failed fetch', error.stack);
 			});
 		});
 	});
