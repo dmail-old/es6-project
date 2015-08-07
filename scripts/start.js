@@ -1,5 +1,5 @@
 require('../main.js');
 
 global.platform.ready(function(){
-	System.import('./lib/start.js').then(console.log);
+	System.import('./lib/start.js');
 });

@@ -8,8 +8,20 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 (function(){
 
 	var platform = {
+		logLevel: 'info',
+
+		info: function(){
+			if( this.logLevel === 'info' ){
+				console.info.apply(console, arguments);
+			}
+		},
+
 		ready: function(listener){
 			this.onready = listener;
+		},
+
+		error: function(error){
+			this.onerror(error);
 		},
 
 		onerror: function(error){
@@ -136,10 +148,13 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 		platform.global.require = function(module){
 			return require(module);
 		};
+
+		if( process.argv.indexOf('--silent') != -1 ){
+			platform.logLevel = 'error';
+		}
 	}
 
-	console.log(platform.name, platform.version);
-
+	platform.info(platform.name, platform.version);
 	platform.global.platform = platform;
 
 	var dependencies = [];
@@ -199,7 +214,11 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 			};
 
 			if( platform.type === 'process' ){
-				require('system-node-sourcemap');
+				var transformError = require('system-node-sourcemap');
+				platform.error = function(error){
+					transformError(error);
+					this.onerror(error);
+				};
 				//System.babelOptions.retainLines = true;
 			}
 		}
@@ -216,11 +235,11 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 
 		function includeNext(error){
 			if( error ){
-				console.log('include error', error);
+				platform.info('include error', error);
 				done(error);
 			}
 			else if( i === j ){
-				console.log('all dependencies included');
+				platform.info('all dependencies included', error);
 				done();
 			}
 			else{
@@ -228,7 +247,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 				i++;
 
 				if( !dependency.condition || dependency.condition() ){
-					console.log('loading', dependency.name);
+					platform.info('loading', dependency.name);
 					platform.include(dependency.url, function(error){
 						if( error ){
 							includeNext(error);
@@ -242,7 +261,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 					});
 				}
 				else{
-					console.log('skipping', dependency.name);
+					platform.info('skipping', dependency.name);
 					includeNext();
 				}
 			}
@@ -270,27 +289,62 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 			});
 		};
 
-		process.on('unhandledRejection', function(error){
-			if( error && error.fromImport ){
-				platform.onerror(error);
-			}
-		});
+		if( process ){
+			process.on('unhandledRejection', function(error){
+				if( error ){
+					platform.error(error);
+				}
+			});
+		}
 
-		System.import('./app/server/server.js').then(console.log);
-
-		/*
 		System.import('./lib/fetch/fetch.js').then(function(exports){
+			Promise.all(exports.store.storages.map(function(storage){
+				return storage.import().then(function(methods){
+					return storage.name + '=' + Object.keys(methods).join();
+				});
+			})).then(function(storages){
+				platform.info('storages methods :', storages.join(', '));
+			});
+
 			return exports.fetch('./config.json').then(function(response){
 				return response.json();
 			}).then(function(config){
-				console.log('fetched config.json', config);
+				platform.info('use config', config);
 				platform.config  = config;
+
+				platform.observeFileSystem = function(){
+					System.import('./lib/http/http-event-source.js').then(function(exports){
+						var url = platform.baseURL + '/filesystem-events.js';
+						var source = exports.HttpEventSource.create(url);
+
+						source.on('change', function(e){
+							var file = e.data, module;
+
+							console.log(file, 'has changed');
+
+							/*
+							file = jsenv.loader.normalize(file);
+							// le fichier modifié est bien un module que l'on utilise
+							module = jsenv.findModuleByURL(file);
+
+							//console.log('trying to find', file);
+
+							if( module ){
+								jsenv.onmodulechange(module);
+							}
+							*/
+						});
+						source.on('error', function(e){
+							console.log('event source connection error', e);
+						});
+					});
+				};
+
 				platform.onready();
 			}).catch(function(error){
-				console.log('failed fetch', error.stack);
+				platform.info('failed fetch', error.stack);
 			});
 		});
-		*/
 	});
 
 })();
