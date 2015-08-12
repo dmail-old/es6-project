@@ -1,3 +1,5 @@
+/* global System */
+
 /*
 http://www.2ality.com/2015/04/node-es6-transpiled.html
 
@@ -101,7 +103,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 		platform.version = parseVersion(agent.version);
 		platform.os = navigator.platform.toLowerCase();
 
-		platform.systemLocation = './node_modules/es6-module-loader/dist/es6-module-loader-dev.js';
+		platform.systemLocation = './node_modules/systemjs/system.js';
 	}
 	else{
 		platform.include = function(url, done){
@@ -167,6 +169,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 		}
 	});
 
+	/*
 	dependencies.push({
 		name: 'URL',
 		url: './node_modules/@dmail/url/index.js',
@@ -174,6 +177,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 			return false === 'URL' in platform.global;
 		}
 	});
+	*/
 
 	dependencies.push({
 		name: 'Object.assign',
@@ -213,7 +217,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 
 			};
 
-			if( platform.type === 'process' ){
+			if( true && platform.type === 'process' ){
 				var transformError = require('system-node-sourcemap');
 				require('babel/polyfill');
 				platform.error = function(error){
@@ -274,8 +278,8 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 	includeDependencies(dependencies, function(error){
 		if( error ) throw error;
 
+		/*
 		var importMethod = System.import;
-
 		System.import = function(normalizedName){
 			return importMethod.apply(this, arguments).catch(function(error){
 				// faudrais exclude les erreur de réseau
@@ -289,11 +293,11 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 				return Promise.reject(error);
 			});
 		};
+		*/
 
 		if( process ){
 			process.on('unhandledRejection', function(error, p){
 				if( error ){
-					console.log('unhandled');
 					platform.error(error);
 				}
 			});
