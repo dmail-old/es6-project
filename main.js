@@ -145,10 +145,6 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 
 		platform.systemLocation = './lib/system.js';
 
-		platform.global.require = function(module){
-			return require(module);
-		};
-
 		if( process.argv.indexOf('--silent') != -1 ){
 			platform.logLevel = 'error';
 		}
@@ -221,6 +217,25 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 					this.onerror(error);
 				};
 				//System.babelOptions.retainLines = true;
+
+				platform.global.require = function(module){
+					return require(module);
+				};
+
+				var nativeModules = ['http', 'https', 'fs', 'stream', 'path', 'url', 'querystring', 'child_process'];
+				nativeModules = nativeModules.map(function(name){
+					return 'node/' + name;
+				});
+
+				var fetch = System.fetch;
+				System.fetch = function(load){
+					var name = load.address.slice(System.baseURL.length);
+
+					if( nativeModules.indexOf(name) != -1 ){
+						return 'module.exports = require("' + name + '")';
+					}
+					return fetch.call(this, load);
+				};
 			}
 		}
 	});
@@ -273,6 +288,22 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 
 	includeDependencies(dependencies, function(error){
 		if( error ) throw error;
+
+		var conditionals = {
+			'platform': platform.type
+		};
+
+		var locate = System.locate;
+		System.locate = function(name){
+			for(var key in conditionals ){
+				var conditional = '{' + key +  '}';
+
+				if( name.indexOf(conditional) != -1 ){
+					name = name.replace(conditional, conditionals[key]);
+				}
+			}
+			return locate.call(this, arguments);
+		};
 
 		var importMethod = System.import;
 
