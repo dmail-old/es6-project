@@ -297,8 +297,8 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 			'platform': platform.type
 		};
 
-		var locate = System.locate;
-		System.locate = function(name){
+		var normalize = System.normalize;
+		System.normalize = function(name){
 			for(var key in conditionals ){
 				var conditional = '{' + key +  '}';
 
@@ -306,7 +306,7 @@ imaginon que j eveuille m'en servir, le prob c'est que la version transpilé du 
 					name = name.replace(conditional, conditionals[key]);
 				}
 			}
-			return locate.call(this, arguments);
+			return normalize.call(this, arguments);
 		};
 
 		/*
