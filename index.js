@@ -20,27 +20,29 @@ function start(){
 		platform.config  = config;
 
 		platform.observeFileSystem = function(){
-			var url = config['server-url'] + '/filesystem-events.js';
-			var source = http.createEventSource(url);
+			System.import('./node_modules/http/lib/event-source.js').then(function(EventSource){
+				var url = config['server-url'] + '/filesystem-events.js';
+				var source = EventSource.create(url);
 
-			source.on('change', function(e){
-				var file = e.data, module;
+				source.on('change', function(e){
+					var file = e.data, module;
 
-				console.log(file, 'has changed');
+					console.log(file, 'has changed');
 
 
-				//file = jsenv.loader.normalize(file);
-				// le fichier modifié est bien un module que l'on utilise
-				//module = jsenv.findModuleByURL(file);
+					//file = jsenv.loader.normalize(file);
+					// le fichier modifié est bien un module que l'on utilise
+					//module = jsenv.findModuleByURL(file);
 
-				//console.log('trying to find', file);
+					//console.log('trying to find', file);
 
-				if( module ){
-					jsenv.onmodulechange(module);
-				}
-			});
-			source.on('error', function(e){
-				console.log('event source connection error', e);
+					if( module ){
+						jsenv.onmodulechange(module);
+					}
+				});
+				source.on('error', function(e){
+					console.log('event source connection error', e);
+				});
 			});
 		};
 	});
