@@ -1,17 +1,9 @@
-require('system-platform');
+/* global System, platform */
 
-function start(){
-	var http, ressource;
+require('system-http');
 
-	Promise.all([
-		'./node_modules/http/index.js',
-		'./node_modules/ressource/index.js',
-	].map(function(name){
-		return System.import(name);
-	})).then(function(modules){
-		http = modules[0];
-		ressource = modules[1];
-
+global.platform.ready(function(){
+	System.import('./node_modules/ressource/index.js').then(function(ressource){
 		return ressource.get('./config.json').then(function(response){
 			return response.json();
 		});
@@ -46,8 +38,4 @@ function start(){
 			});
 		};
 	});
-}
-
-global.platform.ready(function(){
-	start();
 });

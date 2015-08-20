@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"description": "A basic es6 project",
 	"dependencies": {
-		"system-platform": "git+https://github.com/dmail/system-platform",
+		"system-http": "git+https://github.com/dmail/system-http",
 		"@dmail/http": "git+https://github.com/dmail/http",
 		"ressource": "git+https://github.com/dmail/ressource"
 	},
