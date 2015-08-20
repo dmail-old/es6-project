@@ -1,7 +1,0 @@
-'use strict';
-
-require('@dmail/source-map-node-error');
-
-throw new Error('here');
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsT0FBTyxDQUFDLDhCQUE4QixDQUFDLENBQUM7O0FBRXhDLE1BQU0sSUFBSSxLQUFLLENBQUMsTUFBTSxDQUFDLENBQUMiLCJmaWxlIjoiaW5kZXgtY29tcGlsZWQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJyZXF1aXJlKCdAZG1haWwvc291cmNlLW1hcC1ub2RlLWVycm9yJyk7XHJcblxyXG50aHJvdyBuZXcgRXJyb3IoJ2hlcmUnKTsiXX0=

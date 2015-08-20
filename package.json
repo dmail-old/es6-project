@@ -11,6 +11,7 @@
 		"@dmail/object-assign": "*",
 		"@dmail/url-search-params": "*",
 		"@dmail/url": "*",
+		"@dmail/http": "*",
 		"system-node-sourcemap": "*",
 		"open": "*"
 	},
