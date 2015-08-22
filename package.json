@@ -3,14 +3,16 @@
 	"version": "0.0.1",
 	"description": "A basic es6 project",
 	"dependencies": {
+		"system-postinstall": "git+https://github.com/dmail/system-postinstall",
 		"system-http": "git+https://github.com/dmail/system-http",
+		"@dmail/proto": "git+https://github.com/dmail/proto",
 		"@dmail/http": "git+https://github.com/dmail/http",
 		"@dmail/http-eventsource": "git+https://github.com/dmail/http-eventsource",
 		"ressource": "git+https://github.com/dmail/ressource"
 	},
 	"scripts": {
 		"preinstall": "node scripts/preinstall.js",
-		"postinstall": "node scripts/postinstall.js",
+		"postinstall": "system-postinstall",
 		"start": "node scripts/start.js",
 		"update": "node scripts/update.js"
 	},

@@ -3,7 +3,7 @@
 require('system-http');
 
 global.platform.ready(function(){
-	System.import('./node_modules/ressource/index.js').then(function(ressource){
+	System.import('./lib/modules/ressource/index.js').then(function(ressource){
 		return ressource.get('./config.json').then(function(response){
 			return response.json();
 		});
@@ -12,7 +12,7 @@ global.platform.ready(function(){
 		platform.config  = config;
 
 		platform.observeFileSystem = function(){
-			System.import('./node_modules/http-event-source/index.js').then(function(EventSource){
+			System.import('./lib/modules/http-event-source/index.js').then(function(EventSource){
 				var url = config['server-url'] + '/filesystem-events.js';
 				var source = EventSource.create(url);
 
