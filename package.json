@@ -5,6 +5,7 @@
 	"dependencies": {
 		"system-http": "git+https://github.com/dmail/system-http",
 		"@dmail/http": "git+https://github.com/dmail/http",
+		"@dmail/http-eventsource": "git+https://github.com/dmail/http-eventsource",
 		"ressource": "git+https://github.com/dmail/ressource"
 	},
 	"scripts": {

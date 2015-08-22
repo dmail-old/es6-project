@@ -12,7 +12,7 @@ global.platform.ready(function(){
 		platform.config  = config;
 
 		platform.observeFileSystem = function(){
-			System.import('./node_modules/http/lib/event-source.js').then(function(EventSource){
+			System.import('./node_modules/http-event-source/index.js').then(function(EventSource){
 				var url = config['server-url'] + '/filesystem-events.js';
 				var source = EventSource.create(url);
 
@@ -28,9 +28,11 @@ global.platform.ready(function(){
 
 					//console.log('trying to find', file);
 
+					/*
 					if( module ){
 						jsenv.onmodulechange(module);
 					}
+					*/
 				});
 				source.on('error', function(e){
 					console.log('event source connection error', e);
